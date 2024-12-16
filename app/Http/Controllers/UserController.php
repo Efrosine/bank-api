@@ -30,6 +30,12 @@ class UserController extends Controller
         $user->balance += $request->amount;
         $user->save();
 
+        $user->transactions()->create([
+            'type' => 'deposit',
+            'amount' => $request->amount,
+            'transaction_date' => now(),
+        ]);
+
         return response()->json([
             'message' => 'Balance topped up successfully : ' . $request->amount,
         ]);
