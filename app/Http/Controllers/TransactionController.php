@@ -18,7 +18,7 @@ class TransactionController extends Controller
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required|string',
-            'ecommerce_user_id' => 'required|integer|unique:account_bindings,ecommerce_user_id',
+            'ecommerce_user_id' => 'required|integer',
         ]);
 
         // Attempt to authenticate the user
